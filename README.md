@@ -12,14 +12,12 @@ Die Komponente ist Teil des [Phoenix Reisen Design-Systems](https://design-syste
 npm install --save @phoenixreisen/notification
 ```
 
-#### Verhalten
+#### Mehrere Notifications rendern
 
 Nach einem Benutzerereignis (z.B. Speichern oder Löschen) wird ein Notification-Objekt zum  `Set()` auszugebender Notifications hinzugefügt. Das `Set` ist von der aufrufenden View zu deklarieren und der `Notifications`-Komponente als
 Parameter zu übergeben.
 
-`Notifications` iteriert über die Liste und rendert entsprechend oft die `Notification`-Komponente. Danach, nach ca. 5 Sekunden, ruft `Notification` die als Parameter übergebene `toggle()`-Funktion auf, die dafür sorgt, dass das Notification-Objekt aus der Liste gelöscht wird.
-
-#### Mehrere Notifications rendern
+`Notifications` iteriert über die Liste und rendert entsprechend oft die `Notification`-Komponente mit den jeweiligen Objektdaten. Danach, nach ca. 5 Sekunden, ruft `Notification` die als Parameter übergebene `toggle()`-Funktion auf, die dafür sorgt, dass das jeweilige Notification-Objekt aus der Liste gelöscht wird.
 
 Falls ein Benutzer potentiell mehrere Ereignisse hintereinander provozieren kann.
 
