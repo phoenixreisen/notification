@@ -1,0 +1,41 @@
+{
+  "name": "@phoenixreisen/modal",
+  "version": "0.0.3",
+  "description": "Auf Mithril basierende Modal-Komponente. Styles kommen aus dem Phoenix Design System.",
+  "homepage": "https://design-system.phoenixreisen.net",
+  "main": "dist/modal.view.js",
+  "scripts": {
+    "compile:js": "babel src --out-dir dist",
+    "compile:scss": "npx sass --no-source-map ./src:./dist",
+    "prepublish": "npm run compile:js && npm run compile:scss && npm test",
+    "pretest": "babel src --out-dir test",
+    "test": "ospec --require ./test-setup.js",
+    "posttest": "del-cli test"
+  },
+  "author": "Phoenix Reisen <it@phoenixreisen.com>",
+  "contributors": [
+    "Phoenix Reisen <it@phoenixreisen.com>",
+    "Fabian Marcus <f.marcus@phoenixreisen.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phoenixreisen/modal.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "mithril": "^2.0.4"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-file-loader": "^2.0.0",
+    "babel-plugin-inline-svg": "^1.0.1",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "del-cli": "^3.0.0",
+    "jsdom": "^15.2.1",
+    "mithril-node-render": "^2.3.2",
+    "mithril-query": "^3.0.1",
+    "ospec": "^4.0.1"
+  }
+}
