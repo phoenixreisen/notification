@@ -19,8 +19,6 @@ Parameter zu übergeben.
 
 `Notifications` iteriert über die Liste und rendert entsprechend oft die `Notification`-Komponente mit den jeweiligen Objektdaten. Danach, nach ca. 5 Sekunden, ruft `Notification` die als Parameter übergebene `toggle()`-Funktion auf, die dafür sorgt, dass das jeweilige Notification-Objekt aus der Liste gelöscht wird.
 
-Falls ein Benutzer potentiell mehrere Ereignisse hintereinander provozieren kann.
-
 ```js
 const notifications = new Set();
 const save = () => Promise.resolve('saved!');
