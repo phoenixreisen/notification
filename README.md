@@ -49,6 +49,7 @@ const ExampleView = {
 const ExampleView = {
     view() {
 
+        // entweder ES6+
         showNotification &&
         <Notification
             status="success"
@@ -56,6 +57,7 @@ const ExampleView = {
             toggle={() => (showNotification = false)}
         />
 
+        // oder Hyperscript
         showNotification &&
         m(Notification, {
             status: "success",
