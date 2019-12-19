@@ -1,6 +1,6 @@
-# Phoenix Modal
+# Phoenix Status Notification
 
-JS-/[Mithril](https://mithril.js.org/)-Komponente für das Phoenix Modal.
+JS-/[Mithril](https://mithril.js.org/)-Komponente für die Darstellung von Status Notification.
 
 Die Komponente ist Teil des [Phoenix Reisen Design-Systems](https://design-system.phoenixreisen.net).
 
@@ -9,59 +9,77 @@ Die Komponente ist Teil des [Phoenix Reisen Design-Systems](https://design-syste
 [Mithril](https://mithril.js.org/) wird benötigt.
 
 ```bash
-npm install --save @phoenixreisen/modal
+npm install --save @phoenixreisen/notification
 ```
 
-## Anwendung
+#### Verhalten
+
+Nach einem Benutzerereignis (z.B. Speichern oder Löschen) wird ein Notification-Objekt zum  `Set()` auszugebender Notifications hinzugefügt. Das `Set` ist von der aufrufenden View zu deklarieren und der `Notifications`-Komponente als
+Parameter zu übergeben.
+
+`Notifications` iteriert über die Liste und rendert entsprechend oft die `Notification`-Komponente. Danach, nach ca. 5 Sekunden, ruft `Notification` die als Parameter übergebene `toggle()`-Funktion auf, die dafür sorgt, dass das Notification-Objekt aus der Liste gelöscht wird.
+
+#### Mehrere Notifications rendern
+
+Falls ein Benutzer potentiell mehrere Ereignisse hintereinander provozieren kann.
 
 ```js
-// entweder CommonJS
-const Modal = require('@phoenixreisen/modal');
+const notifications = new Set();
+const save = () => Promise.resolve('saved!');
 
-// oder ES6+
-import Modal from '@phoenixreisen/modal';
+const submit = () => {
+    save().then(() => {
+        notifications.add({
+            status: 'success',
+            text: 'Erfolgreich gespeichert!',
+        });
+    });
+}
+
+const ExampleView = {
+    view() {
+        // entweder ES6+
+        <Notifications list={notifications} />;
+
+        // oder Hyperscript
+        m(Notifications, { list: notifications });
+    }
+};
 ```
 
-#### Aufruf
-
-Das Modal selbst kümmert sich **nicht** um seinen Geöffnet-/Geschlossen-Status. Das muss außerhalb entschieden werden, indem eine Statusvariable dafür sorgt, ob das Modal gerendert wird oder nicht.
-
-Wenn keine Größe angegeben ist, passt sich das Modal bis zu seiner `max-width` und `max-height` an seinen Content an. Folgende **fixe Größen für Tablets und Desktops** können aber auch festgelegt werden:
-
-- s7590 - 75% breit, 90% hoch
-- s9090 - 90% breit, 90% hoch
-- s5050 - 50% breit, 50% hoch
-- s5075 - 50% breit, 75% hoch
-
-Auf Smartphones nimmt das Modal immer 90% der Breite ein und wird bis zu 90% hoch.
+#### Nur eine spezielle Notification rendern
 
 ```js
-// Hyperscript bzw. Javascript
-m(Modal, {
-    size: 's9090',                      // optional
-    title: "Mein Modal",                // optional
-    withCloseText: false,               // optional
-    content: m('div', 'CONTENT'),       // pflicht
-    footer: m('div', 'FOOTER'),         // optional
-    toggle: () => state.show = false,   // optional
-});
+const ExampleView = {
+    view() {
 
-// JSX
-<Modal title="Mein Modal" withCloseText={false}
-    toggle={() => state.show = false}
-    content={<div>CONTENT</div>}
-    footer={<div>FOOTER</div>}>
-</Modal>
+        showNotification &&
+        <Notification
+            status="success"
+            text="Erfolgreich gespeichert!"
+            toggle={() => (showNotification = false)}
+        />
+
+        showNotification &&
+        m(Notification, {
+            status: "success",
+            text: "Erfolgreich gespeichert!"
+            toggle: () => (showNotification = false)
+        });
+    }
+}
 ```
 
 ## Test
 
 ```bash
 npm install
-npm run test
+npm test
 ```
 
 ## Deployment
+
+Mit `npm publish` wird automatisch auch `npm test` aufgerufen.
 
 ```bash
 npm version [major|minor|patch]     # increase version x.x.x => major.minor.patch

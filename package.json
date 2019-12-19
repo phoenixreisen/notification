@@ -1,9 +1,9 @@
 {
-  "name": "@phoenixreisen/modal",
-  "version": "0.0.3",
-  "description": "Auf Mithril basierende Modal-Komponente. Styles kommen aus dem Phoenix Design System.",
+  "name": "@phoenixreisen/notification",
+  "version": "0.0.1",
+  "description": "Auf Mithril basierende Notification-Komponente. Styles kommen aus dem Phoenix-Design-System.",
   "homepage": "https://design-system.phoenixreisen.net",
-  "main": "dist/modal.view.js",
+  "main": "dist/notification.m.js",
   "scripts": {
     "compile:js": "babel src --out-dir dist",
     "compile:scss": "npx sass --no-source-map ./src:./dist",
@@ -19,7 +19,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/phoenixreisen/modal.git"
+    "url": "https://github.com/phoenixreisen/notification.git"
   },
   "license": "MIT",
   "dependencies": {
