@@ -1,4 +1,4 @@
-const SHOWTIMER = 5050; // 50ms extra
+const SHOWTIMER = 5100; // 100ms extra
 
 export const Notifications = {
     view({attrs}) {
@@ -31,6 +31,7 @@ export const Notification = {
         const { toggle } = attrs;
         setTimeout(() => {
             toggle();
+            m.redraw();
         }, SHOWTIMER);
     },
 
