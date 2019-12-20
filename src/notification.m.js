@@ -29,14 +29,17 @@ export const Notification = {
 
     oncreate({attrs}) {
         const { toggle } = attrs;
-        setTimeout(() => toggle(), SHOWTIMER);
+        setTimeout(() => {
+            toggle();
+            m.redraw();
+        }, SHOWTIMER);
     },
 
     view({state, attrs}) {
         const { status, text } = attrs;
 
         return (
-            <article class={`notification notification--${status || 'info'}`}>
+            <article class={`notification notification--${status || 'primary'}`}>
                 <i class={`fas fa-${state.icon} mr2`}></i>
                 {text}
             </article>

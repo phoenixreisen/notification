@@ -35,7 +35,7 @@ test.spec('#1 - Die Komponente', () => {
     });
     test('sollte ohne Statusangabe eine Info rendern', () => {
         test(Info.should.have('.fas.fa-info-circle')).equals(true);
-        test(Info.should.have('.notification.notification--info')).equals(true);
+        test(Info.should.have('.notification.notification--primary')).equals(true);
         test(Info.should.contain('Ich bin ein Bibabutzemann!')).equals(true);
     });
 });
