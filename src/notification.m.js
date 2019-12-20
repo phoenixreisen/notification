@@ -31,7 +31,6 @@ export const Notification = {
         const { toggle } = attrs;
         setTimeout(() => {
             toggle();
-            m.redraw();
         }, SHOWTIMER);
     },
 
