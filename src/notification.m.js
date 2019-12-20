@@ -1,4 +1,4 @@
-const SHOWTIMER = 5100; // 100ms extra
+const SHOWTIMER = 10100; // 100ms extra
 
 export const Notifications = {
     view({attrs}) {
