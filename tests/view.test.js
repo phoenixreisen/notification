@@ -65,13 +65,13 @@ test.spec('#2 - Die Komponente', () => {
 });
 
 test.spec('#3 - Die Liste', () => {
-    const notifications = new Set([
-        { text: "Note 1", status: "success" },
-        { text: "Note 2", status: "error" },
-        { text: "Note 3", status: "success"}
-    ]);
     const NotificationsView = require('../test/notification.m.js').Notifications;
-    const Notes = mq(m(NotificationsView, { list: notifications }));
+    const LIST = require('../test/notification.m.js').NOTIFICATIONLIST;
+
+    LIST.add({ text: "Note 1", status: "success" });
+    LIST.add({ text: "Note 2", status: "error" });
+    LIST.add({ text: "Note 3", status: "success"});
+    const Notes = mq(m(NotificationsView, { list: LIST }));
 
     test('sollte alles durchrendern', () => {
         test(Notes.should.have('.notification--error')).equals(true);
