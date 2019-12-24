@@ -1,5 +1,7 @@
 const SHOWTIMER = 10100; // 100ms extra
 
+export const NOTIFICATIONLIST = new Set();
+
 export const Notifications = {
     view({attrs}) {
         const { list } = attrs;
