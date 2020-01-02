@@ -1,4 +1,4 @@
-const SHOWTIMER = 10100; // 100ms extra
+const SHOWTIMER = 8100; // 100ms extra
 
 export const NOTIFICATIONLIST = new Set();
 
@@ -42,8 +42,12 @@ export const Notification = {
 
         return (
             <article class={`notification notification--${status || 'primary'}`}>
-                <i class={`fas fa-${state.icon} mr2`}></i>
-                {text}
+                <i class={`fas fa-${state.icon}`}></i>
+                <span>{text}</span>
+                <a href="javascript:" class="fas fa-times" onclick={() => {
+                    toggle();
+                    m.redraw();
+                }}></a>
             </article>
         );
     },
