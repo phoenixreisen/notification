@@ -38,7 +38,7 @@ export const Notification = {
     },
 
     view({state, attrs}) {
-        const { status, text } = attrs;
+        const { status, text, toggle } = attrs;
 
         return (
             <article class={`notification notification--${status || 'primary'}`}>
