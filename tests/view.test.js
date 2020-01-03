@@ -3,7 +3,7 @@ const mq = require("mithril-query");
 const test = require("ospec");
 
 test.spec('#1 - Die Komponente', () => {
-    const NotificationView = require('../test/notification.m.js').Notification;
+    const NotificationView = require('../dist/notification.m.js').Notification;
     const state = { show: true };
 
     const Success = mq(m(NotificationView, {
@@ -41,7 +41,7 @@ test.spec('#1 - Die Komponente', () => {
 });
 
 test.spec('#2 - Die Komponente', () => {
-    const NotificationView = require('../test/notification.m.js').Notification;
+    const NotificationView = require('../dist/notification.m.js').Notification;
     const state = { show: true };
 
     test('sollte ohne Parameter "test" nicht renderbar sein', () => {
@@ -65,8 +65,8 @@ test.spec('#2 - Die Komponente', () => {
 });
 
 test.spec('#3 - Die Liste', () => {
-    const NotificationsView = require('../test/notification.m.js').Notifications;
-    const LIST = require('../test/notification.m.js').NOTIFICATIONLIST;
+    const NotificationsView = require('../dist/notification.m.js').Notifications;
+    const LIST = require('../dist/notification.m.js').NOTIFICATIONLIST;
 
     LIST.add({ text: "Note 1", status: "success" });
     LIST.add({ text: "Note 2", status: "error" });

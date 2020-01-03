@@ -4,13 +4,13 @@
   "description": "Auf Mithril basierende Notification-Komponente. Styles kommen aus dem Phoenix-Design-System.",
   "homepage": "https://design-system.phoenixreisen.net",
   "main": "dist/notification.m.js",
+  "module": "src/notification.m.js",
   "scripts": {
-    "compile:js": "babel src --out-dir dist",
-    "compile:scss": "npx sass --no-source-map ./src:./dist",
-    "prepublish": "npm run compile:js && npm run compile:scss && npm test",
-    "pretest": "babel src --out-dir test",
     "test": "ospec --require ./test-setup.js",
-    "posttest": "del-cli test"
+    "compile:js": "babel ./src/ --out-dir ./dist/",
+    "compile:scss": "npx sass --no-source-map ./src:./dist",
+    "pretest": "del-cli ./dist && npm run compile:js && npm run compile:scss",
+    "prepublish": "npm test"
   },
   "author": "Phoenix Reisen <it@phoenixreisen.com>",
   "contributors": [
