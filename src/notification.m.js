@@ -1,6 +1,7 @@
 const SHOWTIMER = 8100; // 100ms extra
 
-export const NOTIFICATIONLIST = new Set();
+// Die Liste aller auszugebenden Notification-Objekte
+export const Notes = new Set();
 
 export const Notifications = {
     view({attrs}) {
