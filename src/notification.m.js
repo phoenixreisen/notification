@@ -1,8 +1,9 @@
 const SHOWTIMER = 8100; // 100ms extra
 
 // Die Liste aller auszugebenden Notification-Objekte
-export const Notes = new Set();
+export const notes = new Set();
 
+// Ausgabe aller Notifications
 export const Notifications = {
     view({attrs}) {
         const { list } = attrs;
@@ -18,6 +19,7 @@ export const Notifications = {
     },
 };
 
+// Ausgabe einer Notification
 export const Notification = {
     oninit({state, attrs}) {
         if(!attrs.toggle || !attrs.text) {

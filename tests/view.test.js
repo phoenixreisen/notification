@@ -66,7 +66,7 @@ test.spec('#2 - Die Komponente', () => {
 
 test.spec('#3 - Die Liste', () => {
     const NotificationsView = require('../dist/notification.m.js').Notifications;
-    const LIST = require('../dist/notification.m.js').Notes;
+    const LIST = require('../dist/notification.m.js').notes;
 
     LIST.add({ text: "Note 1", status: "success" });
     LIST.add({ text: "Note 2", status: "error" });
