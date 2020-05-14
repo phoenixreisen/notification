@@ -70,3 +70,5 @@ export const Notifications: m.Component<NotesAttrs> = {
         ]);
     }
 };
+
+export default Notifications;
