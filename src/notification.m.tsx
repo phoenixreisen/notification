@@ -1,4 +1,4 @@
-import {NoteState, NoteAttrs, NotesAttrs, ICONS, STATUS} from './notification.types';
+import {NoteType, NoteState, NoteAttrs, NotesAttrs, ICONS, STATUS} from './notification.types';
 import m from 'mithril';
 
 //--- Variablen -----
@@ -8,7 +8,7 @@ import m from 'mithril';
 const SHOWTIMER = 8100;
 
 // Die Liste aller auszugebenden Notification-Objekte
-export const notes = new Set();
+export const notes = new Set<NoteType>();
 
 
 //--- Komponenten -----
@@ -60,7 +60,7 @@ export const Notifications: m.Component<NotesAttrs> = {
         const NoteView = Notification as any;
 
         return ([
-            Array.from(list).map((note: any) =>
+            Array.from(list).map((note: NoteType) =>
                 <NoteView
                     text={note.text}
                     status={note.status}

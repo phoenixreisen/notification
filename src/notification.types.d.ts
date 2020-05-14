@@ -9,6 +9,11 @@ export const enum STATUS {
     error = 'error',
 }
 
+export type NoteType = {
+    text: string,
+    status?: STATUS,
+}
+
 export interface NoteAttrs {
     text: string,
     status?: STATUS,
@@ -20,5 +25,5 @@ export interface NoteState {
 }
 
 export interface NotesAttrs {
-    list: Set<{text: string, status?: STATUS}>
+    list: Set<NoteType>
 }
