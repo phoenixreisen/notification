@@ -1,6 +1,8 @@
-global.m = require('mithril');
+const m = require('mithril');
 const mq = require("mithril-query");
 const test = require("ospec");
+
+Object.assign(global, m);
 
 test.spec('#1 - Die Komponente', () => {
     const NotificationView = require('../dist/notification.m.js').Notification;
@@ -48,7 +50,7 @@ test.spec('#2 - Die Komponente', () => {
         let error = null;
         try {
             mq(m(NotificationView, {
-                toggle: () => (state.show = false),
+                toggle: () => (state.show = false)
             }));
         } catch(e) {
             error = e;
@@ -58,8 +60,13 @@ test.spec('#2 - Die Komponente', () => {
 
     test('sollte ohne "toggle()"-Funktion nicht renderbar sein', () => {
         let error = null;
-        try { mq(m(NotificationView, { text: 'Ich bin ein Bibabutzemann!' })); }
-        catch(e) { error = e; }
+        try {
+            mq(m(NotificationView, {
+                text: 'Ich bin ein Bibabutzemann!'
+            }));
+        } catch(e) {
+            error = e;
+        }
         test(error).notEquals(null)
     });
 });
@@ -70,7 +77,8 @@ test.spec('#3 - Die Liste', () => {
 
     LIST.add({ text: "Note 1", status: "success" });
     LIST.add({ text: "Note 2", status: "error" });
-    LIST.add({ text: "Note 3", status: "success"});
+    LIST.add({ text: "Note 3", status: "success" });
+
     const Notes = mq(m(NotificationsView, { list: LIST }));
 
     test('sollte alles durchrendern', () => {

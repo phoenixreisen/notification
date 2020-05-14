@@ -4,13 +4,14 @@
   "description": "Auf Mithril basierende Notification-Komponente. Styles kommen aus dem Phoenix-Design-System.",
   "homepage": "https://design-system.phoenixreisen.net",
   "main": "dist/notification.m.js",
-  "module": "src/notification.m.js",
+  "types": "dist/notification.m.d.ts",
+  "module": "src/notification.m.tsx",
   "scripts": {
-    "test": "ospec --require ./test-setup.js",
-    "compile:js": "babel ./src/ --out-dir ./dist/",
+    "prepublish": "npm test",
+    "test": "ospec --preload ./test-setup.js",
+    "compile:ts": "npx tsc --build tsconfig.json",
     "compile:scss": "npx sass --no-source-map ./src:./dist",
-    "pretest": "del-cli ./dist && npm run compile:js && npm run compile:scss",
-    "prepublish": "npm test"
+    "pretest": "del-cli ./dist && npm run compile:ts && npm run compile:scss"
   },
   "author": "Phoenix Reisen <it@phoenixreisen.com>",
   "contributors": [
@@ -26,16 +27,13 @@
     "mithril": "^2.0.4"
   },
   "devDependencies": {
-    "babel": "^6.23.0",
-    "babel-cli": "^6.26.0",
-    "babel-plugin-file-loader": "^2.0.0",
-    "babel-plugin-inline-svg": "^1.0.1",
-    "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-preset-env": "^1.7.0",
+    "@types/mithril": "^2.0.2",
     "del-cli": "^3.0.0",
-    "jsdom": "^15.2.1",
-    "mithril-node-render": "^2.3.2",
+    "jsdom": "^16.2.2",
+    "mithril-node-render": "^3.0.0",
     "mithril-query": "^3.1.0",
-    "ospec": "^4.0.1"
+    "ospec": "^4.1.1",
+    "tslib": "^2.0.0",
+    "typescript": "^3.8.3"
   }
 }

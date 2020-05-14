@@ -34,7 +34,7 @@ const submit = () => {
 
 const ExampleView = {
     view() {
-        // entweder ES6+
+        // entweder JSX
         <Notifications list={notifications} />;
 
         // oder Hyperscript
@@ -47,9 +47,9 @@ const ExampleView = {
 
 ```js
 const ExampleView = {
-    view() {
 
-        // entweder ES6+
+    view() {
+        // entweder JSX
         showNotification &&
         <Notification
             status="success"
@@ -80,6 +80,7 @@ npm test
 Mit `npm publish` wird automatisch auch `npm test` aufgerufen.
 
 ```bash
+[npm install]                       # Abhängigkeiten installieren
 npm version [major|minor|patch]     # increase version x.x.x => major.minor.patch
 npm publish                         # upload to npm
 git push
