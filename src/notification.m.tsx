@@ -1,4 +1,4 @@
-import {NoteType, NoteState, NoteAttrs, NotesAttrs, ICONS, STATUS} from './notification.types';
+import {NoteObject, NoteState, NoteAttrs, NotesAttrs} from './notification';
 import m from 'mithril';
 
 //--- Variablen -----
@@ -8,8 +8,20 @@ import m from 'mithril';
 const SHOWTIMER = 8100;
 
 // Die Liste aller auszugebenden Notification-Objekte
-export const notes = new Set<NoteType>();
+export const notes = new Set<NoteObject>();
 
+// Namen der FontAwesome Icons für versch. Stati
+export const enum ICONS {
+    check = 'check',
+    info = 'info-circle',
+    triangle = 'exclamation-triangle',
+}
+
+// Mögliche Stati
+export const enum STATUS {
+    error = 'error',
+    success = 'success',
+}
 
 //--- Komponenten -----
 
@@ -60,7 +72,7 @@ export const Notifications: m.Component<NotesAttrs> = {
         const NoteView = Notification as any;
 
         return ([
-            Array.from(list).map((note: NoteType) =>
+            Array.from(list).map((note: NoteObject) =>
                 <NoteView
                     text={note.text}
                     status={note.status}
