@@ -1,6 +1,6 @@
 {
   "name": "@phoenixreisen/notification",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Auf Mithril basierende Notification-Komponente. Styles kommen aus dem Phoenix-Design-System.",
   "homepage": "https://design-system.phoenixreisen.net",
   "main": "dist/notification.m.js",
