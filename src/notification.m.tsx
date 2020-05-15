@@ -1,5 +1,25 @@
-import {NoteObject, NoteState, NoteAttrs, NotesAttrs} from './notification';
 import m from 'mithril';
+
+//--- Types -----
+
+export interface NoteObject {
+    text: string,
+    status?: STATUS,
+}
+
+export interface NoteAttrs {
+    text: string,
+    status?: STATUS,
+    toggle: () => void,
+}
+
+export interface NoteState {
+    icon: string,
+}
+
+export interface NotesAttrs {
+    list: Set<NoteObject>
+}
 
 //--- Variablen -----
 
