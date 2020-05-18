@@ -3,7 +3,7 @@ import m from 'mithril';
 //--- Types -----
 
 export interface NoteObject {
-    text: string,
+    text: string | Element,
     status?: STATUS,
 }
 
