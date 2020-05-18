@@ -3,7 +3,7 @@ import m from 'mithril';
 //--- Types -----
 
 export interface NoteObject {
-    text: string | Element,
+    text: string | Element | JSX.Element | m.Vnode,
     status?: STATUS,
 }
 
