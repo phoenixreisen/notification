@@ -4,6 +4,10 @@ JS-/[Mithril](https://mithril.js.org/)-Komponente für die Darstellung von Statu
 
 Die Komponente ist Teil des [Phoenix Reisen Design-Systems](https://design-system.phoenixreisen.net).
 
+## Demo
+
+https://phoenixreisen.github.io/notification/
+
 ## Installation
 
 [Mithril](https://mithril.js.org/) wird benötigt.
@@ -85,3 +89,15 @@ npm version [major|minor|patch]     # increase version x.x.x => major.minor.patc
 npm publish                         # upload to npm
 git push
 ```
+
+## Github Page
+
+Demo wird mittels Rollup gebaut.
+
+```bash
+[npm i]
+npm run compile:example
+```
+
+Nach dem `git push` zu erreichen unter:
+https://phoenixreisen.github.io/notification/
