@@ -16,38 +16,44 @@ https://phoenixreisen.github.io/notification/
 npm install --save @phoenixreisen/notification
 ```
 
-#### Mehrere Notifications rendern
+### Mehrere Notifications rendern
 
-Nach einem Benutzerereignis (z.B. Speichern oder Löschen) wird ein Notification-Objekt zum  `Set()` auszugebender Notifications hinzugefügt. Das `Set` ist von der aufrufenden View zu deklarieren und der `Notifications`-Komponente als
-Parameter zu übergeben.
+Nach einem Benutzerereignis (z.B. Speichern oder Löschen) wird ein Notification-Objekt zum `Set()` auszugebender Notifications hinzugefügt. Das `Set` ist entweder lokal von der aufrufenden View zu deklarieren oder kann quasi global aus dem Modul importiert werden. Anschließend wird es der `Notifications`-Komponente als Parameter übergeben.
 
 `Notifications` iteriert über die Liste und rendert entsprechend oft die `Notification`-Komponente mit den jeweiligen Objektdaten. Danach, nach ca. 5 Sekunden, ruft `Notification` die als Parameter übergebene `toggle()`-Funktion auf, die dafür sorgt, dass das jeweilige Notification-Objekt aus der Liste gelöscht wird.
 
 ```js
-const notifications = new Set();
-const save = () => Promise.resolve('saved!');
+// Entweder lokal
+const notes = new Set();
+
+// oder global
+import {notes} from '@phoenixreisen/notification';
 
 const submit = () => {
-    save().then(() => {
-        notifications.add({
-            status: 'success',
-            text: 'Erfolgreich gespeichert!',
+    Promise.resolve('saved!')
+        .then(() => {
+            notes.add({
+                status: 'success',
+                text: 'Erfolgreich gespeichert!',
+            });
         });
-    });
 }
 
 const ExampleView = {
+
     view() {
         // entweder JSX
-        <Notifications list={notifications} />;
+        <Notifications list={notes} />;
 
         // oder Hyperscript
-        m(Notifications, { list: notifications });
+        m(Notifications, { list: notes });
     }
 };
 ```
 
-#### Nur eine spezielle Notification rendern
+### Nur eine spezielle Notification rendern
+
+Einfach mit entsprechenden Parametern aufrufen.
 
 ```js
 const ExampleView = {
@@ -55,19 +61,19 @@ const ExampleView = {
     view() {
         // entweder JSX
         showNotification &&
-        <Notification
-            status="success"
-            text="Erfolgreich gespeichert!"
-            toggle={() => (showNotification = false)}
-        />
+            <Notification
+                status="success"
+                text="Erfolgreich gespeichert!"
+                toggle={() => (showNotification = false)}
+            />
 
         // oder Hyperscript
         showNotification &&
-        m(Notification, {
-            status: "success",
-            text: "Erfolgreich gespeichert!"
-            toggle: () => (showNotification = false)
-        });
+            m(Notification, {
+                status: "success",
+                text: "Erfolgreich gespeichert!"
+                toggle: () => (showNotification = false)
+            });
     }
 }
 ```
