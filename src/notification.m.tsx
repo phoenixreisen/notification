@@ -15,11 +15,11 @@ export interface NoteAttrs {
     toggle: () => void,
 }
 
-export interface NoteState {
+export type NoteState = {
     icon: string,
 }
 
-export interface NotesAttrs {
+export type NotesAttrs = {
     list: Set<NoteObject>
 }
 
